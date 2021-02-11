@@ -18,7 +18,8 @@
     ],
     "require": {
         "php": "^7.3",
-        "sylius/sylius": "~1.8.6",
+        "friendsofsymfony/oauth-server-bundle": ">2.0.0-alpha.0 ^2.0@dev",
+        "sylius/sylius": "~1.9.0@beta",
         "symfony/dotenv": "^4.4",
         "symfony/flex": "^1.9",
         "sylius/paypal-plugin": "^1.1"
@@ -89,7 +90,8 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false
+            "allow-contrib": false,
+            "require": "4.4.*"
         },
         "branch-alias": {
             "dev-master": "1.8-dev"
