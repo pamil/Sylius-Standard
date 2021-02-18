@@ -91,14 +91,14 @@ jobs:
                 id: composer-cache
                 run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-            -
-                name: Cache Composer
-                uses: actions/cache@v2
-                with:
-                    path: ${{ steps.composer-cache.outputs.dir }}
-                    key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-php-${{ matrix.php }}-composer-
+#            -
+#                name: Cache Composer
+#                uses: actions/cache@v2
+#                with:
+#                    path: ${{ steps.composer-cache.outputs.dir }}
+#                    key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
+#                    restore-keys: |
+#                        ${{ runner.os }}-php-${{ matrix.php }}-composer-
 
             -
                 name: Install PHP dependencies
@@ -176,7 +176,7 @@ jobs:
             
             -
                 name: Run JS Behat
-                run: vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags="@javascript && ~@todo && ~@cli" || vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags="@javascript && ~@todo && ~@cli" --rerun || vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags="@javascript && ~@todo && ~@cli" --rerun
+                run: vendor/bin/behat --colors --strict --no-interaction -vvv --tags="@javascript && ~@todo && ~@cli" || vendor/bin/behat --colors --strict --no-interaction -vvv --tags="@javascript && ~@todo && ~@cli" --rerun || vendor/bin/behat --colors --strict --no-interaction -vvv -f progress --tags="@javascript && ~@todo && ~@cli" --rerun
 
             -
                 name: Upload Behat logs
